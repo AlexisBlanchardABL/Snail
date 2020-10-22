@@ -1,17 +1,33 @@
 package com.example.snail;
 
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StopWatch;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class SnailTest {
     Snail snail;
 
+    private StopWatch computationWatch;
+    private StopWatch printWatch;
+
+    @BeforeEach
+    public void setup() {
+        computationWatch = new StopWatch();
+        printWatch = new StopWatch();
+        computationWatch.start();
+    }
 
     @AfterEach
     void print() {
+        computationWatch.stop();
+        printWatch.start();
         snail.print();
+        printWatch.stop();
+        System.out.println("\nComputation duration: " + computationWatch.getTotalTimeMillis() + " ms (" + computationWatch.getTotalTimeNanos() / 1000 + " μs)");
+        System.out.println("\nPrint duration: " + printWatch.getTotalTimeMillis() + " ms (" + printWatch.getTotalTimeNanos() / 1000 + " μs)");
     }
 
     @Test
