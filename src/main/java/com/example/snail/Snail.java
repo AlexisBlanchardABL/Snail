@@ -49,4 +49,18 @@ public class Snail {
         }
     }
 
+    void print() {
+        int lengthToPrint = String.valueOf(width * width).length() + 1;
+        for (int i = 0; i < width; i++) {
+            System.out.println();
+            for (int j = 0; j < width; j++) {
+                StringBuilder numberAsString = new StringBuilder(String.valueOf(snail[i][j]));
+                while (numberAsString.length() < lengthToPrint) {
+                    numberAsString.append(" ");
+                }
+                System.out.print(numberAsString);
+            }
+        }
+    }
+
 }

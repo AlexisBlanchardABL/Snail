@@ -1,11 +1,18 @@
 package com.example.snail;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 public class SnailTest {
     Snail snail;
+
+
+    @AfterEach
+    void print() {
+        snail.print();
+    }
 
     @Test
     public void testSnail_1() {
